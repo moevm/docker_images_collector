@@ -13,3 +13,28 @@ A: В связи с событиями 30.05.2024 образы с hub.docker.com
 - получать названия всех докер образов из Dockerfile / docker-compose.yml / конфиги github actions / и т.д.
 - скачивать все найденные образы с учётом тегов (тег latest не допускается)
 - загружать скачанные образы на яндекс.диск, с учетом контрольной суммы, чтобы несколько раз не загружать один и тот же образ
+
+## Запуск проекта
+### Установка зависимостей
+```
+pip3 install -r requirements.txt
+```
+
+### Запуск проекта для локальных репозиториев
+```
+python main.py --function local --base_path "C:/Users/your_base_path" --save_directory "your_save_directory" --yandex_disk_directory "your_yandex_disk_directory" --yandex_disk_token "your_yandex_disk_token"
+```
+
+### Запуск проекта для удаленных репозиториев
+```
+python main.py --function remote --repo_urls "your_repo_urls" --save_directory "your_save_directory" --yandex_disk_directory "your_yandex_disk_directory" --yandex_disk_token "your_yandex_disk_token"
+```
+
+### Параметры:
+* **--function local**: Запуск в локальном режиме.
+* **--base_path** задает базовый путь для поиска локальных репозиториев.
+* **--function remote**: Запуск в удаленном режиме.
+* **--repo_urls** задает список URL-ов удаленных репозиториев, разделенных запятыми.
+* **--save_directory** определяет директорию, куда будут сохранены архивы Docker.
+* **--yandex_disk_directory** указывает на директорию на Яндекс.Диске, куда будут загружены файлы.
+* **--yandex_disk_token** представляет собой токен для доступа к Яндекс.Диску.
